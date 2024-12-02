@@ -48,6 +48,7 @@
             padding: 0 15px; /* Pas de padding vertical pour éviter l'augmentation de la hauteur */
             font-size: 16px;
             height: 32px; /* Hauteur réduite du champ pour qu'il soit un peu plus bas que la hauteur du bouton */
+            width: 300px;
             border-radius: 50px;
             border: 2px solid #6200ea;
             outline: none;
@@ -62,21 +63,27 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au focus */
         }
 
-        /* Icône de suppression (X) */
+        /* Icône de fermeture (SVG) */
         .btn-recherche .close {
             display: none;
-            font-size: 18px;
-            color: #6200ea;
             cursor: pointer;
             margin-left: 10px;
             transition: color 0.3s ease;
+            width: 24px;
+            height: 24px;
         }
 
-        .btn-recherche .close:hover {
-            color: #3700b3; /* Couleur changeante au survol */
+        .btn-recherche .close svg {
+            width: 100%;
+            height: 100%;
+            fill: #6200ea;
         }
 
-        /* Affichage du champ et de l'icône X au clic */
+        .btn-recherche .close:hover svg {
+            fill: #3700b3; /* Couleur changeante au survol */
+        }
+
+        /* Affichage du champ et de l'icône SVG au clic */
         .active .input-recherche {
             display: inline-block;
         }
@@ -96,7 +103,11 @@
     <button class="btn-recherche" id="btn-recherche">
         <i class="fas fa-search"></i>
         <input type="text" class="input-recherche" placeholder="Rechercher" id="search-field" />
-        <i class="fas fa-times close" id="close-icon"></i>
+        <div class="close" id="close-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M5 5h2v2H5zm4 4H7V7h2zm2 2H9V9h2zm2 0h-2v2H9v2H7v2H5v2h2v-2h2v-2h2v-2h2v2h2v2h2v2h2v-2h-2v-2h-2v-2h-2zm2-2v2h-2V9zm2-2v2h-2V7zm0 0V5h2v2z"/>
+            </svg>
+        </div>
         <span>Rechercher</span> <!-- Le texte "Rechercher" est ici, mais il sera masqué lorsque le bouton est cliqué -->
     </button>
 
