@@ -3,65 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouton Rechercher avec Champ</title>
+    <title>Bouton Rechercher Professionnel</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Pour l'icône -->
     <style>
         /* Style du bouton */
         .btn-recherche {
             display: flex;
             align-items: center;
-            padding: 12px 30px;
-            background-color: #6200ea; /* Couleur de fond violet */
+            padding: 10px 20px; /* Ajusté pour que la hauteur soit raisonnable */
+            background: linear-gradient(45deg, #6200ea, #3700b3); /* Dégradé subtil violet-bleu */
             color: white; /* Couleur du texte */
-            border: 2px solid #6200ea; /* Bordure du même couleur que le fond */
+            border: 2px solid transparent; /* Bordure transparente par défaut */
             border-radius: 50px; /* Bords arrondis prononcés */
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            text-transform: uppercase; /* Texte en majuscules pour un look plus moderne */
+            text-transform: uppercase; /* Texte en majuscules pour un look moderne */
             letter-spacing: 1px; /* Espacement entre les lettres */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Ombre douce */
-            transition: all 0.4s ease-out; /* Transition fluide */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre douce */
+            transition: all 0.3s ease-out; /* Transition fluide */
+            position: relative;
+            height: 40px; /* Hauteur du bouton */
         }
 
         .btn-recherche:hover {
-            background-color: #3700b3; /* Couleur de fond au survol */
-            border-color: #3700b3; /* Bordure qui change au survol */
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Ombre plus profonde */
+            background: linear-gradient(45deg, #3700b3, #6200ea); /* Inverser le dégradé au survol */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Ombre plus marquée au survol */
             transform: translateY(-4px); /* Effet de levée */
         }
 
         .btn-recherche:active {
-            transform: translateY(1px); /* Rétablir la position lors du clic */
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Ombre légère lors du clic */
+            transform: translateY(1px); /* Effet de pression lors du clic */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre plus légère lors du clic */
         }
 
         .btn-recherche i {
-            margin-right: 15px; /* Espacement entre l'icône et le texte */
+            margin-right: 10px; /* Espacement entre l'icône et le texte */
             font-size: 18px; /* Taille de l'icône */
         }
 
         /* Style du champ de texte fusionné */
         .input-recherche {
             display: none;
-            padding: 10px 15px;
+            padding: 0 15px; /* Pas de padding vertical pour éviter l'augmentation de la hauteur */
             font-size: 16px;
+            height: 32px; /* Hauteur réduite du champ pour qu'il soit un peu plus bas que la hauteur du bouton */
             border-radius: 50px;
-            border: none;
+            border: 2px solid #6200ea;
             outline: none;
             flex-grow: 1;
             margin-left: 10px;
-            box-shadow: none;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Ombre douce autour du champ */
+            transition: all 0.3s ease; /* Transition fluide pour le champ */
+        }
+
+        .input-recherche:focus {
+            border-color: #3700b3; /* Bordure bleue au focus */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au focus */
         }
 
         /* Icône de suppression (X) */
         .btn-recherche .close {
             display: none;
             font-size: 18px;
-            color: white;
+            color: #6200ea;
             cursor: pointer;
             margin-left: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .btn-recherche .close:hover {
+            color: #3700b3; /* Couleur changeante au survol */
         }
 
         /* Affichage du champ et de l'icône X au clic */
