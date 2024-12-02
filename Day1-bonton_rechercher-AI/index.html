@@ -6,35 +6,47 @@
     <title>Bouton Rechercher Professionnel</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Pour l'icône -->
     <style>
+        /* Général */
+        body {
+            font-family: 'Arial', sans-serif; /* Police moderne et simple */
+            background-color: #f4f4f4; /* Fond clair pour le contraste */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
         /* Style du bouton */
         .btn-recherche {
             display: flex;
             align-items: center;
-            padding: 10px 20px; /* Ajusté pour que la hauteur soit raisonnable */
+            padding: 10px 20px; /* Ajusté pour une taille optimale */
             background: linear-gradient(45deg, #6200ea, #3700b3); /* Dégradé subtil violet-bleu */
             color: white; /* Couleur du texte */
             border: 2px solid transparent; /* Bordure transparente par défaut */
-            border-radius: 50px; /* Bords arrondis prononcés */
+            border-radius: 50px; /* Bords arrondis pour un aspect moderne */
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             text-transform: uppercase; /* Texte en majuscules pour un look moderne */
             letter-spacing: 1px; /* Espacement entre les lettres */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre douce */
-            transition: all 0.3s ease-out; /* Transition fluide */
+            transition: all 0.3s ease-out; /* Transition fluide lors des interactions */
             position: relative;
             height: 40px; /* Hauteur du bouton */
         }
 
+        /* Au survol du bouton */
         .btn-recherche:hover {
             background: linear-gradient(45deg, #3700b3, #6200ea); /* Inverser le dégradé au survol */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Ombre plus marquée au survol */
-            transform: translateY(-4px); /* Effet de levée */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Ombre plus marquée pour un effet de profondeur */
         }
 
+        /* Lors du clic sur le bouton */
         .btn-recherche:active {
-            transform: translateY(1px); /* Effet de pression lors du clic */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre plus légère lors du clic */
+            transform: translateY(1px); /* Effet de pression pour un clic naturel */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre plus douce lors du clic */
         }
 
         .btn-recherche i {
@@ -42,25 +54,26 @@
             font-size: 18px; /* Taille de l'icône */
         }
 
-        /* Style du champ de texte fusionné */
+        /* Style du champ de texte */
         .input-recherche {
             display: none;
-            padding: 0 15px; /* Pas de padding vertical pour éviter l'augmentation de la hauteur */
+            padding: 0 15px; /* Pas de padding vertical pour une hauteur cohérente */
             font-size: 16px;
-            height: 32px; /* Hauteur réduite du champ pour qu'il soit un peu plus bas que la hauteur du bouton */
-            width: 300px;
+            height: 32px; /* Hauteur du champ réduite mais toujours alignée avec le bouton */
+            width: 250px; /* Largeur du champ */
             border-radius: 50px;
             border: 2px solid #6200ea;
             outline: none;
             flex-grow: 1;
             margin-left: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Ombre douce autour du champ */
-            transition: all 0.3s ease; /* Transition fluide pour le champ */
+            transition: none; /* Retirer l'animation lors du focus */
         }
 
+        /* Lorsque le champ est actif (focus) */
         .input-recherche:focus {
-            border-color: #3700b3; /* Bordure bleue au focus */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au focus */
+            border-color: #54e4fd; /* Bordure bleue lors du focus */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* Ombre légère pour un effet élégant */
         }
 
         /* Icône de fermeture (SVG) */
@@ -68,7 +81,6 @@
             display: none;
             cursor: pointer;
             margin-left: 10px;
-            transition: color 0.3s ease;
             width: 24px;
             height: 24px;
         }
@@ -76,9 +88,10 @@
         .btn-recherche .close svg {
             width: 100%;
             height: 100%;
-            fill: #6200ea;
+            fill: #6200ea; /* Couleur de l'icône par défaut */
         }
 
+        /* Changer la couleur de l'icône au survol */
         .btn-recherche .close:hover svg {
             fill: #3700b3; /* Couleur changeante au survol */
         }
@@ -100,6 +113,7 @@
     </style>
 </head>
 <body>
+    <!-- Bouton de recherche -->
     <button class="btn-recherche" id="btn-recherche">
         <i class="fas fa-search"></i>
         <input type="text" class="input-recherche" placeholder="Rechercher" id="search-field" />
@@ -112,19 +126,20 @@
     </button>
 
     <script>
+        // Références aux éléments
         const btnRecherche = document.getElementById('btn-recherche');
         const searchField = document.getElementById('search-field');
         const closeIcon = document.getElementById('close-icon');
 
         // Quand le bouton est cliqué
         btnRecherche.addEventListener('click', function() {
-            // Ajouter la classe active pour afficher le champ de recherche et l'icône X
+            // Ajouter la classe active pour afficher le champ de recherche et l'icône
             btnRecherche.classList.add('active');
             // Activer le champ de texte pour permettre la saisie
             searchField.focus();
         });
 
-        // Quand l'icône X est cliquée
+        // Quand l'icône de fermeture est cliquée
         closeIcon.addEventListener('click', function(event) {
             event.stopPropagation(); // Empêcher la propagation du clic vers le bouton
             // Retirer la classe active pour revenir à l'état initial
