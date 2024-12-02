@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouton Rechercher avec Champ</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Pour l'icône -->
+    <style>
+        /* Style du bouton */
+        .btn-recherche {
+            display: flex;
+            align-items: center;
+            padding: 12px 30px;
+            background-color: #6200ea; /* Couleur de fond violet */
+            color: white; /* Couleur du texte */
+            border: 2px solid #6200ea; /* Bordure du même couleur que le fond */
+            border-radius: 50px; /* Bords arrondis prononcés */
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase; /* Texte en majuscules pour un look plus moderne */
+            letter-spacing: 1px; /* Espacement entre les lettres */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Ombre douce */
+            transition: all 0.4s ease-out; /* Transition fluide */
+        }
+
+        .btn-recherche:hover {
+            background-color: #3700b3; /* Couleur de fond au survol */
+            border-color: #3700b3; /* Bordure qui change au survol */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Ombre plus profonde */
+            transform: translateY(-4px); /* Effet de levée */
+        }
+
+        .btn-recherche:active {
+            transform: translateY(1px); /* Rétablir la position lors du clic */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Ombre légère lors du clic */
+        }
+
+        .btn-recherche i {
+            margin-right: 15px; /* Espacement entre l'icône et le texte */
+            font-size: 18px; /* Taille de l'icône */
+        }
+
+        /* Style du champ de texte fusionné */
+        .input-recherche {
+            display: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            margin-left: 10px;
+            box-shadow: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Icône de suppression (X) */
+        .btn-recherche .close {
+            display: none;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        /* Affichage du champ et de l'icône X au clic */
+        .active .input-recherche {
+            display: inline-block;
+        }
+
+        .active .close {
+            display: inline-block;
+        }
+
+        /* Masquer le texte "Rechercher" quand actif */
+        .active span {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <button class="btn-recherche" id="btn-recherche">
+        <i class="fas fa-search"></i>
+        <input type="text" class="input-recherche" placeholder="Rechercher" id="search-field" />
+        <i class="fas fa-times close" id="close-icon"></i>
+        <span>Rechercher</span> <!-- Le texte "Rechercher" est ici, mais il sera masqué lorsque le bouton est cliqué -->
+    </button>
+
+    <script>
+        const btnRecherche = document.getElementById('btn-recherche');
+        const searchField = document.getElementById('search-field');
+        const closeIcon = document.getElementById('close-icon');
+
+        // Quand le bouton est cliqué
+        btnRecherche.addEventListener('click', function() {
+            // Ajouter la classe active pour afficher le champ de recherche et l'icône X
+            btnRecherche.classList.add('active');
+            // Activer le champ de texte pour permettre la saisie
+            searchField.focus();
+        });
+
+        // Quand l'icône X est cliquée
+        closeIcon.addEventListener('click', function(event) {
+            event.stopPropagation(); // Empêcher la propagation du clic vers le bouton
+            // Retirer la classe active pour revenir à l'état initial
+            btnRecherche.classList.remove('active');
+            // Effacer le champ de texte
+            searchField.value = '';
+        });
+    </script>
+</body>
+</html>
