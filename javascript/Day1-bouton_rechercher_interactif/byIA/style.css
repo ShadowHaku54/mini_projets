@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouton Rechercher Professionnel</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Pour l'icône -->
-    <style>
         /* Général */
         body {
             font-family: 'Arial', sans-serif; /* Police moderne et simple */
@@ -72,7 +64,7 @@
 
         /* Lorsque le champ est actif (focus) */
         .input-recherche:focus {
-            border-color: #54e4fd; /* Bordure bleue lors du focus */
+            border-color: #002aff; /* Bordure bleue lors du focus */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* Ombre légère pour un effet élégant */
         }
 
@@ -110,43 +102,3 @@
             display: none;
         }
 
-    </style>
-</head>
-<body>
-    <!-- Bouton de recherche -->
-    <button class="btn-recherche" id="btn-recherche">
-        <i class="fas fa-search"></i>
-        <input type="text" class="input-recherche" placeholder="Rechercher" id="search-field" />
-        <div class="close" id="close-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M5 5h2v2H5zm4 4H7V7h2zm2 2H9V9h2zm2 0h-2v2H9v2H7v2H5v2h2v-2h2v-2h2v-2h2v2h2v2h2v2h2v-2h-2v-2h-2v-2h-2zm2-2v2h-2V9zm2-2v2h-2V7zm0 0V5h2v2z"/>
-            </svg>
-        </div>
-        <span>Rechercher</span> <!-- Le texte "Rechercher" est ici, mais il sera masqué lorsque le bouton est cliqué -->
-    </button>
-
-    <script>
-        // Références aux éléments
-        const btnRecherche = document.getElementById('btn-recherche');
-        const searchField = document.getElementById('search-field');
-        const closeIcon = document.getElementById('close-icon');
-
-        // Quand le bouton est cliqué
-        btnRecherche.addEventListener('click', function() {
-            // Ajouter la classe active pour afficher le champ de recherche et l'icône
-            btnRecherche.classList.add('active');
-            // Activer le champ de texte pour permettre la saisie
-            searchField.focus();
-        });
-
-        // Quand l'icône de fermeture est cliquée
-        closeIcon.addEventListener('click', function(event) {
-            event.stopPropagation(); // Empêcher la propagation du clic vers le bouton
-            // Retirer la classe active pour revenir à l'état initial
-            btnRecherche.classList.remove('active');
-            // Effacer le champ de texte
-            searchField.value = '';
-        });
-    </script>
-</body>
-</html>
